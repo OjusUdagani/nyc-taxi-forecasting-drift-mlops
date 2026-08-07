@@ -1,0 +1,21 @@
+project_name: "nyc-taxi-demand-forecast"
+version: "1.0.0"
+
+data:
+  merged_file: "nyc-taxi-drift-forecasting/data/raw/merged_file.parquet"
+  aggregated: "data/processed"
+
+model:
+  name: "xgboost"
+  params:
+    n_estimators: 300
+    max_depth: 6
+    learning_rate: 0.02
+    tree_method: 'hist'
+    enable_categorical : True
+
+
+backtest:
+  initial_train_months: 4
+  step_months: 1
+  forecast_horizon: 1 # Predicting 1 hour ahead
